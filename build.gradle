@@ -10,40 +10,33 @@ plugins {
     id 'io.qameta.allure' version '2.8.1'
 }
 
-
-ext {
-    allureVersion = "2.13.8"
-    selenideVersion = "5.18.0"
-    junitVersion = "5.7.0"
-}
-
 repositories {
     maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
     mavenCentral()
 }
 
 allure {
-    version = "${allureVersion}"
+    version = "2.13.8"
     autoconfigure = true
     aspectjweaver = true
     useJUnit5 {
-        version = "${allureVersion}"
+        version = "2.13.8"
     }
 }
 
 dependencies {
-    testImplementation (
+       testImplementation (
             "org.aspectj:aspectjweaver:1.9.5",
-            "com.codeborne:selenide:${selenideVersion}",
-            "io.qameta.allure:allure-selenide:${allureVersion}",
+            "com.codeborne:selenide:5.18.0",
+            "io.qameta.allure:allure-selenide:2.13.8",
             "io.rest-assured:rest-assured:4.1.2",
-            "io.qameta.allure:allure-rest-assured:${allureVersion}",
+            "io.qameta.allure:allure-rest-assured:2.13.8",
             "com.fasterxml.jackson.core:jackson-annotations:2.10.3",
             "io.appium:java-client:7.3.0",
             "ch.qos.logback:logback-classic:1.2.3",
             "io.qameta.allure:allure-ee-junit-platform:3.28.2",
-            "org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+            "org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
 }
 
 tasks.withType(JavaCompile) {
