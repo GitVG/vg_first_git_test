@@ -20,11 +20,13 @@ public class TextBoxTests {
     {
         String dateOfBirthDay = "6",
                 dateOfBirthMonth = "July",
+                firstName = "Billy",
+                lastName = "Willy",
                 dateOfBirthYear = "1988";
 
         open("https://www.demoqa.com/automation-practice-form");
-        $("#firstName").setValue("Billy");
-        $("#lastName").setValue("Willy");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("#userEmail").setValue("WB@mail.ru");
         $(By.xpath("//label[contains(text(),'Male')]")).click();
         $(By.xpath("//div[@class='col-md-9 col-sm-12']/input[@id='userNumber']")).setValue("1234567890");
@@ -51,6 +53,7 @@ public class TextBoxTests {
         $x("//*[@id='react-select-4-input']").setValue("De");
         $x("//*[text()='Delhi']").click();
         $("#submit").click();
+        $x("//td[(text()='Student Name')]").parent().shouldHave(text(firstName + " " + lastName));
        // $x("//div[@class='table-responsive']").shouldHave(text("Billy"+"Willy"));
 
 
