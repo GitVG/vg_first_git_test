@@ -30,13 +30,11 @@ public class TextBoxTests {
         $("#userEmail").setValue("WB@mail.ru");
         $(By.xpath("//label[contains(text(),'Male')]")).click();
         $(By.xpath("//div[@class='col-md-9 col-sm-12']/input[@id='userNumber']")).setValue("1234567890");
-
       /*$(By.xpath("//div[@class='react-datepicker__input-container']/input")).click();
         $(By.xpath("//div[@class ='react-datepicker__month-dropdown-container react-datepicker__month-dropdown-container--select']/select[@class='react-datepicker__month-select']/option[6]")).click();
         $(By.xpath("//div[@class ='react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--select']/select[@class='react-datepicker__year-select']/option[123]")).click();
         $(By.xpath("//div[@class ='react-datepicker__day react-datepicker__day--015']")).click();
       */
-
         $x("//input[@id='dateOfBirthInput']").click();
         if (dateOfBirthDay.length() == 1) dateOfBirthDay = "0" + dateOfBirthDay;
         $x("//select[@class='react-datepicker__year-select']").selectOption(dateOfBirthYear);
@@ -52,23 +50,17 @@ public class TextBoxTests {
         $x("//*[text()='NCR']").click();
         $x("//*[@id='react-select-4-input']").setValue("De");
         $x("//*[text()='Delhi']").click();
-        $("#submit").click();
+        $("#submit").click(); // Проверка формы
         $x("//td[(text()='Student Name')]").parent().shouldHave(text(firstName + " " + lastName));
-       // $x("//div[@class='table-responsive']").shouldHave(text("Billy"+"Willy"));
-
-
-
-
-
+        $x("//td[(text()='Student Email')]").parent().shouldHave(text("WB@mail.ru"));
+        $x("//td[(text()='Gender')]").parent().shouldHave(text("Male"));
+        $x("//td[(text()='Mobile')]").parent().shouldHave(text("1234567890"));
+        $x("//td[(text()='Date of Birth')]").parent().shouldHave(text(dateOfBirthDay + " " + dateOfBirthMonth + "," + dateOfBirthYear));
+        $x("//td[(text()='Subjects')]").parent().shouldHave(text("English"));
+        $x("//td[(text()='Hobbies')]").parent().shouldHave(text("Music"));
+        $x("//td[(text()='Picture')]").parent().shouldHave(text("1.jpg"));
+        $x("//td[(text()='Address')]").parent().shouldHave(text("Lorem Ipsum"));
+        $x("//td[(text()='State and City')]").parent().shouldHave(text("NCR" + " " + "Delhi"));
         sleep(5000);
-
-
-
-
-
     }
-
-
-
-
 }
