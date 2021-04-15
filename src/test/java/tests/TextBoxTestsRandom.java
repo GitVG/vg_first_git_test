@@ -1,12 +1,13 @@
-package tests.PageObjects.steps;
+package tests;
 
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-/*
-public class TextBoxTestsSteps {
-    StudentRegistrationPage studentRegistrationPage;
+import static utils.RandomUtils.*;
+
+public class TextBoxTestsRandom {
+
     @Test
     void titledataAppear() {
         open("https://www.demoqa.com/automation-practice-form");
@@ -15,30 +16,27 @@ public class TextBoxTestsSteps {
 
     @Test
     void dataAppear() {
-        studentRegistrationPage = new StudentRegistrationPage();
         String dateOfBirthDay = "6",
                 dateOfBirthMonth = "July",
-                firstName = "Billy",
-                lastName = "Willy",
+                firstName = getRandomString(10),
+                lastName = getRandomString(10),
                 dateOfBirthYear = "1988";
         open("https://www.demoqa.com/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
-        $("#userEmail").setValue("WB@mail.ru");
+        $("#userEmail").setValue(getRandomEmail());
         $x("//label[contains(text(),'Male')]").click();
-        $x("//input[@id='userNumber']").setValue("1234567890");
+        $x("//input[@id='userNumber']").setValue(getRandomPhone());
         $x("//input[@id='dateOfBirthInput']").click();
         if (dateOfBirthDay.length() == 1) dateOfBirthDay = "0" + dateOfBirthDay;
-        studentRegistrationPage.setBirthdayDate(dateOfBirthYear, dateOfBirthMonth, dateOfBirthDay);
-      //  $x("//select[@class='react-datepicker__year-select']").selectOption(dateOfBirthYear);
-     //   $x("//select[@class='react-datepicker__month-select']").selectOption(dateOfBirthMonth);
-      //  $x("//div[contains(@class,'react-datepicker__day--0" + dateOfBirthDay + "')]").click();
+        $x("//select[@class='react-datepicker__year-select']").selectOption(dateOfBirthYear);
+        $x("//select[@class='react-datepicker__month-select']").selectOption(dateOfBirthMonth);
+        $x("//div[contains(@class,'react-datepicker__day--0" + dateOfBirthDay + "')]").click();
         $x("//input[@id = 'subjectsInput']").setValue("Eng");
         $x("//*[text()='English']").click();
         $x("//div[contains(@class, 'custom-control-inline')]/label[text() = 'Music']").click();
         $x("//input[@id='uploadPicture']").uploadFromClasspath("img/1.jpg");
-        $x("//div[@class='col-md-9 col-sm-12']/textarea").setValue("Lorem Ipsum");
+        $x("//div[@class='col-md-9 col-sm-12']/textarea").setValue(getRandomString(20));
         $x("//*[@id='react-select-3-input']").setValue("NC");
         $x("//*[text()='NCR']").click();
         $x("//*[@id='react-select-4-input']").setValue("De");
@@ -56,4 +54,4 @@ public class TextBoxTestsSteps {
         $x("//td[(text()='State and City')]").parent().shouldHave(text("NCR" + " " + "Delhi"));
 
     }
-}*/
+}
